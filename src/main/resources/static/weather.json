@@ -1,0 +1,45 @@
+{
+    "coord": {
+        "lon": -83.15,
+        "lat": 40.1
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 23.7,
+        "feels_like": 15.75,
+        "temp_min": 23,
+        "temp_max": 25,
+        "pressure": 1026,
+        "humidity": 73
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 4.7,
+        "deg": 360
+    },
+    "clouds": {
+        "all": 1
+    },
+    "dt": 1608030353,
+    "sys": {
+        "type": 1,
+        "id": 5238,
+        "country": "US",
+        "sunrise": 1608036485,
+        "sunset": 1608070085
+    },
+    "timezone": -18000,
+    "id": 0,
+    "name": "Dublin",
+    "cod": 200
+}
+
+/*this is a status data at one time, if you want dynamic or current weather date use the weather api key and use it instead*/ 

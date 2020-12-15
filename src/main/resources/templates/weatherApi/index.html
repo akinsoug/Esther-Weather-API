@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- <div th:if="${data != null && data.name != 'error'}"> -->
+	<div class="col-md-6 offset-md-3">
+	    <br/>
+	    <h1 class="text-center">Get Your Local Forecast 43210 43016</h1>
+	    <form th:action="@{/}" th:object="${request}" method="post" autocomplete="off" >
+	        <div class="form-group">
+	            <input type="text" th:field="*{zipCode}" placeholder="Zip Code" class="form-control"/>
+	        </div>
+	        <div class="form-group">
+	            <button class="btn btn-md btn-primary btn-block" name="Submit" value="Submit" type="Submit"> Check Weather</button>
+	        </div>
+		<span th:if="${data != null && data.name == 'error'}"> Invalid zip code. Weather data not found.</span>
+	    </form>
+	    <hr>
+	    </div>
+
+<div th:if="${data != null && data.name != 'error'}">
+	<div class="container bg-light justify-content-center">
+		<div class="row">
+			<div class="col col-md-6 offset-md-3">
+				<br />
+				<h3> Forecast for <span th:text="${data.name}"> </span> </h3>
+				<p> <b>Temperature:</b> <span th:text="${data.main.temp}"></span> °F </p> <!-- data.main.temp -->
+				<p><b>Temperature:</b> <span th:text="${data.main.get('temp')}"></span> °F</p>
+				<p><b>Cloud Cover:</b> <span th:text="${data.clouds.get('all')}"></span> %</p> 
+				<p><b>Weather Main:</b> <span th:text="${data.weather[0].main}"></span> Weather</p> 
+				<p><b>Weather Description:</b> <span th:text="${data.weather[0].description}"></span> DD</p> 
+				<p><b>Wind:</b> <span th:text="${data.wind.get('speed')}"></span> mph</p>
+				<p><b>Conditions:</b> <span th:text="${data.weather[0].get('description')}"> </span> <img th:src="@{${'http://openweathermap.org/img/w/' + data.weather[0].get('icon') + '.png'}}"></p>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<!-- <a href="/zipCodes"> <button class="btn btn-md btn-primary btn-block" >ZipCodes</button> </a> -->
+	
+	<div class="col-md-6 offset-md-3 text-center" >
+		<div style="padding-left: 15em;"  >
+			<p> <b> Recent Searches: </b></p>
+				
+			<div class="col text-center"th:each="code : ${zipCodeList}" >
+				<div class="row">
+					<div class="text-center">
+						<!-- <p><b>Code: &nbsp; &nbsp;</b> <span th:text="${zipCodeList.get(0).zipCode}"></span> </p> -->
+						<p><b>ZipCode: &nbsp; &nbsp;</b> <span th:text="${code.zipCode}"></span> </p>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		<!-- <form th:action="@{/}" th:object="${request}" method="post" autocomplete="off" >
+		</form> -->
+		<!-- <a href="/zipCodes"> <button class="btn btn-md btn-primary btn-block" >ZipCodes</button> </a> -->
+		
+	</div>
+	
+
+</body>
+</html>
